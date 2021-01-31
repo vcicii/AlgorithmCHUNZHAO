@@ -349,7 +349,7 @@ public int[] maxSlidingWindow(int[] nums, int k){
 
 
 
-### 验证二叉树
+### [验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/)
 
 #### 节点递归
 
