@@ -318,6 +318,37 @@ class Solution {
 }
 ```
 
+#### 单调栈
+
+```java
+public int[] maxSlidingWindow(int[] nums, int k){
+        int[] list = new int[nums.length - k + 1];
+        if (nums.length == 0){
+            return list;
+        }e
+        Deque<Integer> idx = new LinkedList<>();
+        for (int i = 0; i < nums.length; i++) {
+            // 如果队列非空，比较入队元素 与 队列中最后一个元素的大小
+            // 如果 入 大于 队尾， 将队尾元素出队，直到队为空 或 入小于队尾。
+            while(!idx.isEmpty()&&nums[i]>=nums[idx.getLast()]){
+                idx.pollLast();
+            }
+            idx.offerLast(i);
+            // 如果队列非空，而且窗口已经形成，向list中添加队首元素(max val)
+            if (!idx.isEmpty()&&i>=k-1){
+                list[i-k+1] = nums[idx.peekFirst()];
+            }
+            // 如果队首元素超出 窗口范围，将队首出队
+            if (!idx.isEmpty()&&idx.peekFirst()<=i-k+1){
+                idx.pollFirst();
+            }
+        }
+        return list;
+    }
+```
+
+
+
 ### 验证二叉树
 
 #### 节点递归
