@@ -30,24 +30,25 @@ private static int divide_conquer(Problem problem, ) {
 class Solution {
     public double myPow(double x, int n) {
         // 负指数幂处理
-        if (n < 0){
-            x = 1/x;
+        if (n < 0) {
+            x = 1 / x;
             n = -n;
         }
-        return cp(x,n);
+        return cp(x, n);
     }
 
-    public double cp(double x, int n){
+    public double cp(double x, int n) {
         // 终止条件
-        if (n == 0)
+        if (n == 0) {
             return 1.0;
+        }
         // sub-problem
-        double half = cp(x , n/2); // 四舍五入
+        double half = cp(x, n / 2); // 四舍五入
         // merge
-        if( n % 2 ==0){
-            return half*half;
-        }else{
-            return half*half*x;
+        if (n % 2 == 0) {
+            return half * half;
+        } else {
+            return half * half * x;
         }
     }
 }
